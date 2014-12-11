@@ -9,7 +9,7 @@ GameController.prototype.init = function() {
 	var self = this;
 	this.scores = Cookies.get('scorelist');
 	if(this.scores) {
-		this.scores = JSON.parse(scores);
+		this.scores = JSON.parse(this.scores);
 	} else {
 		this.scores = [];
 	}
@@ -52,7 +52,7 @@ GameController.prototype.init = function() {
 	});
 
 	this.scoredgamebtn.click(function() {
-		self.initGame(20);
+		self.initGame(200);
 	});
 
 	this.infgamebtn.click(function() {
