@@ -24,6 +24,8 @@ GameController.prototype.init = function() {
 	this.donecountf = $("#done");
 	this.incorrectcountf = $("#incorrect");
 
+	this.gratsmsg = $("#gratsmsg");
+
 	this.finalcountf = $("#final");
 	this.hiscores = $("#hiscores");
 
@@ -36,6 +38,7 @@ GameController.prototype.init = function() {
 	this.scoredgamebtn = $("#scored-game");
 	this.infgamebtn = $("#inf-game");
 	this.returnbtn = $("#return");
+	this.scoremenubtn = $("#score-menu");
 
 	this.inp.keypress(function(e) {
 		if(e.keyCode === 13) {
@@ -56,8 +59,12 @@ GameController.prototype.init = function() {
 	});
 
 	this.infgamebtn.click(function() {
-		self.initGame(Infinity)
+		self.initGame(Infinity);
 	})
+
+	this.scoremenubtn.click(function() {
+		self.highScoresView();
+	});
 
 	this.mainMenu();
 }
@@ -92,15 +99,32 @@ GameController.prototype.endGame = function(score) {
 	this.gamescreen.hide();
 
 	this.scores.push(score);
-	this.scores.sort();
+	this.scores.sort().reverse();
 
 	this.finalcountf.html(score);
+
+	this.gratsmsg.show();
 
 	this.hiscores.html(this.scores.slice(0,5).map(function(sc, i) {
 		return '<li class="list-group-item"><strong>'+i+'.</strong>'+sc+'</li>';
 	}));
 
 	Cookies.set("scorelist", JSON.stringify(this.scores));
+}
+
+GameController.prototype.highScoresView = function() {
+	this.finalscreen.show();
+	this.mainscreen.hide();
+	this.gamescreen.hide();
+
+	this.finalcountf.html(score);
+
+	this.gratsmsg.hide();
+	this.scores.sort().reverse();
+
+	this.hiscores.html(this.scores.slice(0,5).map(function(sc, i) {
+		return '<li class="list-group-item"><strong>'+i+'.</strong>'+sc+'</li>';
+	}));
 }
 
 GameController.prototype.mainMenu = function() {

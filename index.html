@@ -21,7 +21,10 @@
 	</div>
 	<div class="col-md-12">
 		<button class="btn btn-success col-md-1 col-md-offset-4" id="scored-game">Play</button>
-		<button class="btn btn-primary col-md-1 col-md-offset-2" id="inf-game">Unlimited Mode</button>
+		<div class="col-md-2">
+			<button class="btn btn-warning col-md-6 col-md-offset-3" id="score-menu">High Scores</button>
+		</div>
+		<button class="btn btn-primary col-md-1" id="inf-game">Unlimited Mode</button>
 	</div>
 </div>
 
@@ -68,8 +71,10 @@
 </div>
 
 <div id="final-screen" class="row">
-	<h1 style="text-align: center"> Congratulations! </h1>
-	<h2 style="text-align: center"> You got <span id="final">0</span> points! </h2>
+	<div id="gratsmsg">
+		<h1 style="text-align: center"> Congratulations! </h1>
+		<h2 style="text-align: center"> You got <span id="final">0</span> points! </h2>
+	</div>
 
 	<h3 style="text-align: center"> Personal High Scores </h3>
 	<ol class="col-md-2 col-md-offset-5 list-group" id="hiscores">
