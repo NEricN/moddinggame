@@ -117,8 +117,6 @@ GameController.prototype.highScoresView = function() {
 	this.mainscreen.hide();
 	this.gamescreen.hide();
 
-	this.finalcountf.html(score);
-
 	this.gratsmsg.hide();
 	this.scores.sort().reverse();
 
